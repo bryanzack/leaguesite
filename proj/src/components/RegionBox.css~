@@ -1,0 +1,27 @@
+.regionbox {
+  display: flex;
+  width: 1200px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+}
+
+.regionbox li {
+  background: white;
+  margin: 7px;
+  width: 60px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px; 
+  cursor: pointer;
+  user-select: none;
+}
+
+
+.regionbox li.active {
+  background: black;
+  color: white;
+  font-weight: bold;
+}

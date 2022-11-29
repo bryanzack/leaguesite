@@ -1,0 +1,13 @@
+.region {
+
+}
+
+.region.active {
+  background: black;
+  border: 2px solid black;
+  color: white;
+  font-weight: bold;
+}
+.region:hover {
+  border: 2px solid black;
+}

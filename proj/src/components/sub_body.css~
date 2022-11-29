@@ -1,0 +1,11 @@
+.matches {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  background: #EBEEF1;
+  align-items: center;
+  width: 1200px;
+  height: fit-content;
+  margin: 50px;
+  padding: 25px;
+}

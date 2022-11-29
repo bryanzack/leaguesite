@@ -1,0 +1,63 @@
+.match {
+  list-style: none;
+  margin: 2px;
+  width: 700px;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 6px;
+}
+
+.match.win {
+  background: #D5E3FF;
+  border-left: 7px solid #4171D6;;
+}
+
+.match.lose {
+  background: #ffacac;
+  border-left: 7px solid #D31A45;
+}
+
+.match-obj {
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.gameinfo {
+  //border: 1px solid black;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gamemode {
+  font-weight: bold;
+  font-size: 14px;
+}
+.gamemode.win {
+  color: #4171D6;
+}
+.gamemode.lose {
+  color: #D31A45; 
+}
+
+.didwin {
+  color: #758592;
+  font-weight: bold;
+}
+.timelength {
+  color: #758592;
+  font-weight: bold;
+}
+.timesince {
+  color: #758592;
+}
+
+.champimage {
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
