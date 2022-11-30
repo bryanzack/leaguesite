@@ -9,6 +9,8 @@ import { handleTimeSince, handleTimeLength } from '../helpers/handleTimestamps.j
 import { handleSummonerKey } from '../helpers/handleSummonerKey.js';
 import { handleRuneSecondary, handleRunePrimary } from '../helpers/handleRuneId.js';
 import { handleItemIds } from '../helpers/handleItemIds.js';
+import { handleLargestMultikill } from '../helpers/handleLargestMultikill.js';
+import { handleChampionName } from '../helpers/handleChampionName.js';
 
 class PlayerMatch extends React.Component {
   constructor(props) {
@@ -43,7 +45,7 @@ class PlayerMatch extends React.Component {
     /////////////////
     //  champ info
     let win = this.props.playerData.win;
-    let championName = this.props.playerData.championName;
+    let championName = handleChampionName(this.props.playerData.championName);
     let champIconURL = `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${championName}.png`;
     let champLevel =  this.props.playerData.champLevel;
     
@@ -62,20 +64,23 @@ class PlayerMatch extends React.Component {
     let runeSecondaryURL = `https://ddragon.leagueoflegends.com/cdn/img/${runeSecondaryPath}`;    
     
     // item info
-    let item0 = this.props.playerData.item0
-    let item1 = this.props.playerData.item1
-    let item2 = this.props.playerData.item2
-    let item3 = this.props.playerData.item3
-    let item4 = this.props.playerData.item4
-    let item5 = this.props.playerData.item5
-    let item6 = this.props.playerData.item6
+    let item0 = this.props.playerData.item0;
+    let item1 = this.props.playerData.item1;
+    let item2 = this.props.playerData.item2;
+    let item3 = this.props.playerData.item3;
+    let item4 = this.props.playerData.item4;
+    let item5 = this.props.playerData.item5;
+    let item6 = this.props.playerData.item6;
 
     // score info
-    let kills = this.props.playerData.kills
-    let deaths = this.props.playerData.deaths
-    let assists = this.props.playerData.assists
+    let kills = this.props.playerData.kills;
+    let deaths = this.props.playerData.deaths;
+    let assists = this.props.playerData.assists;
     let kp = (kills + assists) / totalAllyKills;
     let controlWards = this.props.playerData.detectorWardsPlaced;
+    let totalCs = this.props.playerData.totalMinionsKilled + this.props.playerData.neutralMinionsKilled;
+    let largestMultikill = this.props.playerData.largestMultiKill;
+    let largestMultikillStr = handleLargestMultikill(largestMultikill);
     
     // figure out how to keep this updated with version decimal discrepency 
     let itemBaseURL = `https://raw.communitydragon.org/12.22/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/`;
@@ -93,7 +98,7 @@ class PlayerMatch extends React.Component {
     let itemsJson = handleItemIds(items);
 
     return (
-      <li className={win ? "match win" : "match lose"}>
+      <div className={win ? "match win" : "match lose"}>
         <div className="match-obj gameinfo">
             <li className={win ? "gamemode win" : "gamemode lose "}>{gameMode}</li>
             <li className="timesince">{timeSince}</li>
@@ -135,17 +140,73 @@ class PlayerMatch extends React.Component {
                 ? <img className="item" key={key} src={itemsJson[key]} height="25" width="25" alt="test"/>
                 : <div className={win ? "null-item-win" : "null-item-lose"} key={key}/>
             )}
+            <div className="multikill">
+              {
+                (largestMultikill === 0 || largestMultikill === 1)
+                  ? ""
+                  : <div className="multikill-text">{largestMultikillStr}</div>
+              }
+            </div>
           </div>
         </div>
         <div className="stats">
-          <div className="kp">
-            P/Kill {Math.round(kp*100)}%
-          </div>
-          <div className="control-wards">
-            Control Ward {controlWards}
+          <div className="stats-items">
+            <div className="kp">
+              P/Kill {Math.round(kp*100)}%
+            </div>
+            <div className="control-wards">
+              Control Ward {controlWards}
+            </div>
+            <div className="cs">
+              CS {totalCs} ({(totalCs/(gameDuration/60)).toFixed(1)})
+            </div>
           </div>
         </div>
-      </li>
+        <div className="match-obj teams">
+          <div className="team">
+            {Object.keys(this.props.gameData.participants).map((key) =>
+              (this.props.gameData.participants[key].teamId === 100)
+                ? <div className="player" key={key}>
+                    <img 
+                      className="player-champion" 
+                      src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${handleChampionName(this.props.gameData.participants[key].championName)}.png`}
+                      width="17px"
+                      height="17px"
+                    />
+                    {(championName === this.props.gameData.participants[key].championName)
+                      ? <div className="player-name-user">
+                          {this.props.gameData.participants[key].summonerName}
+                        </div> 
+                      : <div className="player-name" onClick={() => {this.props.handleClick("na1", this.props.gameData.participants[key].summonerName)}}>
+                          {this.props.gameData.participants[key].summonerName}
+                        </div>}
+                  </div>
+                : ""
+            )}
+          </div>
+            <div className="team">
+              {Object.keys(this.props.gameData.participants).map((key) =>
+                (this.props.gameData.participants[key].teamId === 200)
+                  ? <div className="player" key={key}>
+                      <img 
+                        className="player-champion" 
+                        src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${handleChampionName(this.props.gameData.participants[key].championName)}.png`}
+                        width="17px"
+                        height="17px"
+                      />
+                      {(championName === this.props.gameData.participants[key].championName)
+                        ? <div className="player-name-user">
+                            {this.props.gameData.participants[key].summonerName}
+                          </div> 
+                        : <div className="player-name" onClick={() => {this.props.handleClick("na1", this.props.gameData.participants[key].summonerName)}}>
+                            {this.props.gameData.participants[key].summonerName}
+                          </div>}
+                    </div>
+                  : ""
+              )}
+            </div>
+        </div>
+      </div>
     );
   }
 }

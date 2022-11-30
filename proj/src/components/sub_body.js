@@ -1,5 +1,5 @@
-import './sub_body.css';
 import React from 'react';
+import './sub_body.css';
 import RegionBox  from './RegionBox.js';
 import PlayerMatch from './PlayerMatch.js';
 
@@ -50,7 +50,8 @@ class sub_body extends React.Component {
                   "gameMode": result["matches"][i]["info"]["gameMode"],
                   "gameDuration": result["matches"][i]["info"]["gameDuration"],
                   "gameEndTimestamp": result["matches"][i]["info"]["gameEndTimestamp"],
-                  "teams": result["matches"][i]["info"]["teams"]
+                  "teams": result["matches"][i]["info"]["teams"],
+                  "participants": result["matches"][i]["info"]["participants"]
                 }
                 for (let j = 0; j < 10; j++) {
                   if (result["puuid"] == result["matches"][i]["info"]["participants"][j]["puuid"]) {
@@ -67,6 +68,7 @@ class sub_body extends React.Component {
                   "playerData": playerData,
                   "gameData": gameData
                 }});
+
             }
             else if (apiResponseCode === 404) {
               this.setState({apiCode: 404, serverCode: 200});
@@ -116,6 +118,7 @@ class sub_body extends React.Component {
                 key={key}
                 playerData={this.state.matches.playerData[key]}
                 gameData={this.state.matches.gameData[key]}
+                handleClick={this.handleValidEntry}
               />)}
           </div>
         )
