@@ -4,7 +4,6 @@ import './PlayerMatch.css';
 // ensures all data is up to date with most recent version, needs updated every time a league patch is released
 import versions from '../static/versions.json';
 
-
 // helpers
 import { handleTimeSince, handleTimeLength } from '../helpers/handleTimestamps.js';
 import { handleSummonerKey } from '../helpers/handleSummonerKey.js';
@@ -33,6 +32,11 @@ class PlayerMatch extends React.Component {
     let gameEndTimestamp = this.props.gameData.gameEndTimestamp;
     let timeSince = handleTimeSince(gameEndTimestamp, todayTimestamp);
     let timeLength = handleTimeLength(gameDuration);
+    let teamId = this.props.playerData.teamId;
+    let totalAllyKills = (teamId === 100) 
+      ? this.props.gameData.teams[0].objectives.champion.kills 
+      : this.props.gameData.teams[1].objectives.champion.kills;
+    
 
     /////////////////
     // player data
@@ -70,6 +74,8 @@ class PlayerMatch extends React.Component {
     let kills = this.props.playerData.kills
     let deaths = this.props.playerData.deaths
     let assists = this.props.playerData.assists
+    let kp = (kills + assists) / totalAllyKills;
+    let controlWards = this.props.playerData.detectorWardsPlaced;
     
     // figure out how to keep this updated with version decimal discrepency 
     let itemBaseURL = `https://raw.communitydragon.org/12.22/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/`;
@@ -129,6 +135,14 @@ class PlayerMatch extends React.Component {
                 ? <img className="item" key={key} src={itemsJson[key]} height="25" width="25" alt="test"/>
                 : <div className={win ? "null-item-win" : "null-item-lose"} key={key}/>
             )}
+          </div>
+        </div>
+        <div className="stats">
+          <div className="kp">
+            P/Kill {Math.round(kp*100)}%
+          </div>
+          <div className="control-wards">
+            Control Ward {controlWards}
           </div>
         </div>
       </li>

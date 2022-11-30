@@ -50,6 +50,7 @@ class sub_body extends React.Component {
                   "gameMode": result["matches"][i]["info"]["gameMode"],
                   "gameDuration": result["matches"][i]["info"]["gameDuration"],
                   "gameEndTimestamp": result["matches"][i]["info"]["gameEndTimestamp"],
+                  "teams": result["matches"][i]["info"]["teams"]
                 }
                 for (let j = 0; j < 10; j++) {
                   if (result["puuid"] == result["matches"][i]["info"]["participants"][j]["puuid"]) {

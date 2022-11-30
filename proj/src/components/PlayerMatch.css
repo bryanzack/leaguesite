@@ -1,7 +1,7 @@
 .match {
   list-style: none;
   margin: 2px;
-  width: 700px;
+  width: 800px;
   height: 100px;
   display: flex;
   flex-direction: row;
@@ -192,6 +192,13 @@
   background: #abc0eb;
   border-radius: 5px;
   margin-right: 2px;
+}
+
+.stats {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+
 }
 
 
