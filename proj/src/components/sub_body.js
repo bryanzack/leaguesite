@@ -43,14 +43,6 @@ class sub_body extends React.Component {
             if (apiResponseCode === 200) {
               let playerData = {};
               let gameData = {};
-              /*
-              let gameData = {
-                "gameMode": result["matches"][0]["info"]["gameMode"],
-                "gameDuration": result["matches"][0]["info"]["gameDuration"],
-                "queueId": result["matches"][0]["info"]["queueId"],
-                "gameEndTimestamp": result["matches"][0]["info"]["gameEndTimestamp"]
-              }
-              */
               console.log(gameData);
               console.log(result["puuid"]);
               for (let i = 0; i < result["matches"].length; i++) {

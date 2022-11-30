@@ -1,5 +1,8 @@
-const express = require('express');
+//const express = require('express');
+import express from 'express';
 const app = express();
+import fetch  from 'node-fetch';
+
 let api_key = "RGAPI-20d29057-f339-42fa-8681-a0a7fb4cd231";
   /*
   app.get('/', (request, response) => {
@@ -44,7 +47,7 @@ async function getResponse(url) {
     }
 
 
-    fetchPromise = fetch(requestURL)
+    fetch(requestURL)
       .then(riotResponse => {
         //console.log(riotResponse);
         // The summoner exists
@@ -63,7 +66,7 @@ async function getResponse(url) {
                 }
                 return matchIds;
               }).then(res => {
-                 urls = [];
+                 let urls = [];
                 for (let i = 0; i < 10; i++) {
                   let contentsURL = `https://${regionCode}.api.riotgames.com/lol/match/v5/matches/${res["matches"][i]}?api_key=${api_key}`;
                   urls[i] = contentsURL; 
@@ -73,7 +76,6 @@ async function getResponse(url) {
                   .then(results => {
                     console.log(results);
                     let arr = [];
-                    //arr.push(["status", riotResponse["status"]]);
                     for (let i in results) {
                       arr.push([i, results[i]]); 
                     }
