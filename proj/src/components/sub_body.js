@@ -2,6 +2,7 @@ import React from 'react';
 import './sub_body.css';
 import RegionBox  from './RegionBox.js';
 import PlayerMatch from './PlayerMatch.js';
+import Searchbar from './Searchbar.js';
 
 class sub_body extends React.Component {
   constructor(props) {
@@ -100,27 +101,34 @@ class sub_body extends React.Component {
   
   render() {
     if (this.state.serverCode === 404 || this.state.serverCode === null) {
-      return (
-      <div className="inputbox">
-        <input className={this.state.isInvalid ? "input active" : "input" } type="text" id="input" onKeyDown={this.handleEnter}>
-        </input>
-        <RegionBox />
-      </div>
+      return ( 
+        <Searchbar 
+          className="search" 
+          enter={this.handleEnter}
+          isInvalid={this.state.isInvalid}
+        />
       )
     }
     else if (this.state.serverCode === 200) {
       if (this.state.apiCode === 200) {
         return (
-          <div className="matches">
-            {Object.keys(this.state.matches.playerData).map((key) =>
-              <PlayerMatch
-                className="match"
-                key={key}
-                playerData={this.state.matches.playerData[key]}
-                gameData={this.state.matches.gameData[key]}
-                handleClick={this.handleValidEntry}
-              />)}
-          </div>
+          <>
+            <Searchbar 
+              className="search" 
+              enter={this.handleEnter}
+              isInvalid={this.state.isInvalid}
+            />
+            <div className="matches">
+              {Object.keys(this.state.matches.playerData).map((key) =>
+                <PlayerMatch
+                  className="match"
+                  key={key}
+                  playerData={this.state.matches.playerData[key]}
+                  gameData={this.state.matches.gameData[key]}
+                  handleClick={this.handleValidEntry}
+                />)}
+            </div>
+          </>
         )
       }
       else if (this.state.apiCode === 404) {
