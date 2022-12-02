@@ -54,7 +54,7 @@ class sub_body extends React.Component {
                   "participants": result["matches"][i]["info"]["participants"]
                 }
                 for (let j = 0; j < 10; j++) {
-                  if (result["puuid"] == result["matches"][i]["info"]["participants"][j]["puuid"]) {
+                  if (result["puuid"] === result["matches"][i]["info"]["participants"][j]["puuid"]) {
                     playerData[i] = result["matches"][i]["info"]["participants"][j];
                   }
                 }
