@@ -62,7 +62,6 @@ async function getResponse(url) {
             // this is used to form a request url for the id of each of the users last 10 matches
             let puuid = summonerData['puuid'];
             let requestMatchURL = `https://${regionCode}.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=10&api_key=${api_key}`;
-            let requestSummonerURL = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${leagueid}?api_key=${api_key}`;
 
             // second fetch gathers users last 10 match ids and puts them into json object
             // requestCount: 2
