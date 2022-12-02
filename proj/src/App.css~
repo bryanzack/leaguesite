@@ -15,11 +15,13 @@
   width: 100%;
   height: fit-content;
   display: flex;
+  flex-direction: column;
   background: grey;
   //border: 2px solid black;
-  align-items: middle;
+  align-items: center;
   justify-content: center; 
 }
+
 
 .footer {
   display: flex;
