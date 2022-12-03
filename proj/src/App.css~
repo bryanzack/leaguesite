@@ -1,6 +1,7 @@
 :root {
   --purp: #98A8F8;
   --white: #FAF7F0;
+  --lightpurp: #BCCEF8;
 }
 
 
@@ -8,6 +9,8 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  background: var(--purp);
 }
 
 .header {
@@ -31,9 +34,11 @@
 
 
 .footer {
+  opacity: 0;
   display: flex;
-  margin: 10px;
+  //margin: 10px;
   border: 2px solid black;
+  background: var(--purp);
   height: 75px;
   position: relative;
 }
@@ -47,7 +52,7 @@
 
 #input {
   width: 500px;
-  height: 20px;
+  height: 15px;
   display: flex;
   font-size: 20px;
   border-radius: 50px;

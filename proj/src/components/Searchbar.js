@@ -6,9 +6,10 @@ class Searchbar extends React.Component {
   render() {
     return (  
       <div className="inputbox">
-        <input className={this.props.isInvalid ? "input active" : "input" } type="text" id="input" onKeyDown={(e) => {this.props.enter(e)}}>
-        </input>
-        <RegionBox />
+        <input className={this.props.isInvalid ? "input active" : "input" } type="text" id="input" onKeyDown={(e) => {this.props.enter(e)}}/>
+        <div className="regionmenu">
+          menu
+        </div>
       </div>
     );
   }
