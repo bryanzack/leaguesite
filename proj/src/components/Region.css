@@ -1,12 +1,21 @@
 .region {
 
+  background: white;
+  margin: 7px;
+  width: 70px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; 
+  cursor: pointer;
+  border: 2px solid white;
 }
 
 .region.active {
-  background: black;
+  background: red;
   border: 2px solid black;
-  color: white;
-  font-weight: bold;
+  color: black;
 }
 .region:hover {
   border: 2px solid black;

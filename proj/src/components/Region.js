@@ -1,7 +1,5 @@
 import './Region.css';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import React, { Component } from 'react';
+import React from 'react';
 
 class Region extends React.Component {
   constructor(props) {

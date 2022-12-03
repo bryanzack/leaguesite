@@ -10,3 +10,10 @@
   flex-direction: column;
   //border: 2px solid black;
 }
+
+.input {
+  background: var(--white);
+  //border: 2px solid (--white);
+}
+
+

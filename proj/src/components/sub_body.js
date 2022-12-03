@@ -49,7 +49,7 @@ class sub_body extends React.Component {
               console.log(result["puuid"]);
               console.log(result["matches"]);
               // if the first match is not found, display no matches found
-              if (result["matches"][0]["status"] != undefined &&
+              if (result["matches"][0]["status"] !== undefined &&
                 result["matches"][0]["status"]["status_code"] === 404) {
                 console.log("NO MATCHES!");
                 noMatches = true; 

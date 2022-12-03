@@ -7,7 +7,7 @@
 }
 
 .regionbox li {
-  background: white;
+  background: var(--white);
   margin: 7px;
   width: 60px;
   height: 40px;
@@ -22,6 +22,6 @@
 
 .regionbox li.active {
   background: black;
-  color: white;
+  color: var(--white);
   font-weight: bold;
 }
