@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import SubBody from './/components/sub_body.js';
 
-
 class App extends React.Component { 
   render() {
     return (

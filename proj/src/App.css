@@ -1,6 +1,7 @@
 :root {
   --purp: #98A8F8;
   --white: #FAF7F0;
+  --lightpurp: #BCCEF8;
 }
 
 
@@ -8,14 +9,18 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  background: var(--purp);
 }
 
 .header {
   //margin: 10px;
   //border: 2px solid black;
   height: 75px;
+  width: 100%;
   display: flex;
   background: var(--purp);
+  //position: fixed;
 }
 
 .body {
@@ -31,9 +36,11 @@
 
 
 .footer {
+  opacity: 0;
   display: flex;
-  margin: 10px;
+  //margin: 10px;
   border: 2px solid black;
+  background: var(--purp);
   height: 75px;
   position: relative;
 }
@@ -45,30 +52,4 @@
   font-size: 15px;
 }
 
-#input {
-  width: 500px;
-  height: 15px;
-  display: flex;
-  font-size: 20px;
-  border-radius: 50px;
-  padding: 20px;
-  outline: none;
-}
 
-#input .active {
-  border: 5px solid red;
-}
-
-.input {
-  border: 5px solid var(--white);
-}
-
-.input.active {
-  animation: test 2s;
-}
-
-@keyframes test {
-  0% { border: 4px solid white; }
-  50% { border: 4px solid red; }
-  100% { border: 4px solid white; }
-}
