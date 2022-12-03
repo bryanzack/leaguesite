@@ -23,6 +23,7 @@ class RegionBox extends React.Component {
   
   componentDidMount() {
     console.log("initial render");
+    this.setState({select: 0});
   };
   
   componentDidUpdate() {

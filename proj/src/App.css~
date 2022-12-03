@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
 :root {
   --purp: #98A8F8;
   --white: #FAF7F0;
@@ -16,13 +19,46 @@
 .header {
   //margin: 10px;
   //border: 2px solid black;
-  height: 75px;
+  height: 80px;
   width: 100%;
   display: flex;
-  background: var(--purp);
-  //position: fixed;
+  background: transparent;
+  position: fixed;
+  justify-content: center;
+}
+.header-container { 
+  display: flex;
+  
+  width: 85%;
+  height: 100%;
+  justify-content: space-between;
+}
+.my-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+  //border: 2px solid black;
+  font-size: 38px;
+  font-family: 'Inter', sans-serif;
 }
 
+.my-links {
+  //border: 2px solid black;
+  align-items: center;
+  width: 120px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.my-links img {
+  border-bottom: 3px solid var(--purp);
+}
+.my-links img:hover {
+  border-bottom: 3px solid black;
+  cursor: pointer;
+}
 .body {
   width: 100%;
   height: fit-content;

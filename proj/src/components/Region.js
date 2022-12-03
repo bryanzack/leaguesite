@@ -7,6 +7,7 @@ class Region extends React.Component {
     this.name = "";
     this.data = "";
     this.setActive = this.setActive.bind(this);
+    this.state =
   }
 
   setActive() {
@@ -24,30 +25,3 @@ class Region extends React.Component {
 
 
 export default Region;
-/*
-function Region(props) {
-
-  function setActive(event) {
-    console.log("clicked: " + event.currentTarget.id);
-    var element = document.querySelector('.regionbox'); 
-    var children = element.children;
-    for (var i=0; i < children.length; i++) {
-      var child = children[i];
-      if (child.id === event.currentTarget.id) {
-        child.classList.add("active");
-      }
-      else {
-        child.classList.remove("active");
-      }
-    }
-  }
-
-  return (
-    <div id={props.name} data={props.data} className="region" onClick={setActive}>
-      {props.name}
-    </div>
-  );
-}
-
-export { Region };
-*/
