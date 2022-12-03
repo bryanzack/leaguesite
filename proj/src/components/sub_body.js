@@ -84,7 +84,9 @@ class sub_body extends React.Component {
                 matches: {
                   "playerData": playerData,
                   "gameData": gameData
-                }});
+                }}, () => {
+                  document.getElementById("input").value = name;
+                });
 
             }
             else if (apiResponseCode === 404) {

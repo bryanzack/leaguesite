@@ -2,8 +2,9 @@
   display: flex;
   width: 1200px;
   height: 70px;
-  align-items: center;
+  align-items: top;
   justify-content: center;
+  margin-top: -15px;
 }
 
 .regionbox li {
