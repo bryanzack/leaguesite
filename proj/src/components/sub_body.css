@@ -1,11 +1,17 @@
 .matches {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  background: #EBEEF1;
+  //border: 2px solid black;
+  //background: #EBEEF1;
+  background: linear-gradient(to bottom, var(--white)0%, var(--purp) 90%);
   align-items: center;
-  width: 1200px;
+  //width: 1200px;
+  width: fit-content;
+  border-radius: 10px;
   height: fit-content;
-  margin: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  margin-top: 0px;
   padding: 25px;
 }

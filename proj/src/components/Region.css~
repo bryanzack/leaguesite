@@ -13,10 +13,9 @@
 }
 
 .region.active {
-  background: black;
+  background: red;
   border: 2px solid black;
-  color: white;
-  font-weight: bold;
+  color: black;
 }
 .region:hover {
   border: 2px solid black;

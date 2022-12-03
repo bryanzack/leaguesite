@@ -13,12 +13,7 @@ import { handleLargestMultikill } from '../helpers/handleLargestMultikill.js';
 import { handleChampionName } from '../helpers/handleChampionName.js';
 
 class PlayerMatch extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-
     /////////////////
     // date info
     /////////////////
@@ -62,15 +57,6 @@ class PlayerMatch extends React.Component {
     let runeSecondary = this.props.playerData.perks.styles[1].style;
     let runeSecondaryPath = handleRuneSecondary(runeSecondary);
     let runeSecondaryURL = `https://ddragon.leagueoflegends.com/cdn/img/${runeSecondaryPath}`;    
-    
-    // item info
-    let item0 = this.props.playerData.item0;
-    let item1 = this.props.playerData.item1;
-    let item2 = this.props.playerData.item2;
-    let item3 = this.props.playerData.item3;
-    let item4 = this.props.playerData.item4;
-    let item5 = this.props.playerData.item5;
-    let item6 = this.props.playerData.item6;
 
     // score info
     let kills = this.props.playerData.kills;
@@ -81,10 +67,8 @@ class PlayerMatch extends React.Component {
     let totalCs = this.props.playerData.totalMinionsKilled + this.props.playerData.neutralMinionsKilled;
     let largestMultikill = this.props.playerData.largestMultiKill;
     let largestMultikillStr = handleLargestMultikill(largestMultikill);
-    
-    // figure out how to keep this updated with version decimal discrepency 
-    let itemBaseURL = `https://raw.communitydragon.org/12.22/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/`;
 
+    // item info
     let items = [
       this.props.playerData.item0,
       this.props.playerData.item1,
@@ -136,7 +120,7 @@ class PlayerMatch extends React.Component {
           </div>
           <div className="user-items">
             {Object.keys(itemsJson).map((key) =>
-              (itemsJson[key] != 0)
+              (itemsJson[key] !== 0)
                 ? <img className="item" key={key} src={itemsJson[key]} height="25" width="25" alt="test"/>
                 : <div className={win ? "null-item-win" : "null-item-lose"} key={key}/>
             )}
@@ -172,6 +156,7 @@ class PlayerMatch extends React.Component {
                       src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${handleChampionName(this.props.gameData.participants[key].championName)}.png`}
                       width="17px"
                       height="17px"
+                      alt="test"
                     />
                     {(championName === this.props.gameData.participants[key].championName)
                       ? <div className="player-name-user">
@@ -193,6 +178,7 @@ class PlayerMatch extends React.Component {
                         src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${handleChampionName(this.props.gameData.participants[key].championName)}.png`}
                         width="17px"
                         height="17px"
+                        alt="test"
                       />
                       {(championName === this.props.gameData.participants[key].championName)
                         ? <div className="player-name-user">
