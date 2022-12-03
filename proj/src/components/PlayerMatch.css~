@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: row;
   border-radius: 6px;
-  opacity: 70%;
+  opacity: 75%;
 }
 
 .match.win {
@@ -28,7 +28,7 @@
 }
 
 .match-obj li {
-  width: 80px;
+  width: 85px;
   text-align: left;
 }
 
@@ -63,6 +63,7 @@
   color: #758592;
   margin-bottom: 7px;
   margin-top: 3px;
+  font-size: 12px;
 }
 
 .champinfo {

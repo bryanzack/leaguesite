@@ -25,7 +25,7 @@ function handleTimeSince(gameEndTimestamp, todayTimestamp) {
   if (Math.round(elapsed[1]) != 1) {
     elapsed[0] = elapsed[0] + "s";
   } 
-  let timeSince = Math.round(elapsed[1]) + ` ${elapsed[0]}`;
+  let timeSince = Math.round(elapsed[1]) + ` ${elapsed[0]} ago`;
   return timeSince;
 }
 
