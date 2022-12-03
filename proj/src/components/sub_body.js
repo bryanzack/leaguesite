@@ -10,6 +10,7 @@ class sub_body extends React.Component {
     this.handleInvalidEntry = this.handleInvalidEntry.bind(this);
     this.handleValidEntry = this.handleValidEntry.bind(this);
     this.state = {
+      isLoading: false,
       isInvalid: false, 
       apiCode: null,
       serverCode: null,
@@ -29,6 +30,7 @@ class sub_body extends React.Component {
   }
 
   handleValidEntry(region, name) {
+    this.setState({isLoading: true});
     //console.log(region);
     //console.log(name);
     fetch(`/users/${region}/${name}`)
@@ -77,27 +79,34 @@ class sub_body extends React.Component {
 
               console.log(playerData);
               console.log(gameData);
+              document.getElementById("input").value = name;
               this.setState({
+                isLoading: false,
                 apiCode: 200, 
                 serverCode: 200, 
                 noMatches: noMatches,
                 matches: {
                   "playerData": playerData,
                   "gameData": gameData
-                }}, () => {
-                  document.getElementById("input").value = name;
-                });
+                }});
 
             }
             else if (apiResponseCode === 404) {
-              this.setState({apiCode: 404, serverCode: 200});
+              this.setState({
+                apiCode: 404, 
+                serverCode: 200, 
+                isLoading: false
+              });
             }
           });
         } 
         else if (serverResponseCode >= 400 && serverResponseCode <= 499) {
+            this.setState({
+              isLoading: false,
+              serverCode: 404
+            });
           response.json().then(result => {
             console.log(response);
-            this.setState({serverCode: 404});
           });
         }
     });
@@ -118,53 +127,76 @@ class sub_body extends React.Component {
   }
   
   render() {
-    if (this.state.serverCode === 404 || this.state.serverCode === null) {
-      return ( 
-        <Searchbar
-          enter={this.handleEnter}
-          isInvalid={this.state.isInvalid}
-        />
+    if (this.state.isLoading) {
+      return (
+        <>
+          <Searchbar
+            enter={this.handleEnter}
+            isInvalid={this.state.isInvalid}
+          />
+          <div className="matches">
+            <h1>Loading...</h1>
+          </div>
+        </>
       )
     }
-    else if (this.state.serverCode === 200) {
-      if (this.state.apiCode === 200) {
-        if (!this.state.noMatches) {
+    else {
+      if (this.state.serverCode === 404 || this.state.serverCode === null) {
+        return ( 
+          <Searchbar
+            enter={this.handleEnter}
+            isInvalid={this.state.isInvalid}
+          />
+        )
+      }
+      else if (this.state.serverCode === 200) {
+        if (this.state.apiCode === 200) {
+          if (!this.state.noMatches) {
+            return (
+              <>
+                <Searchbar 
+                  enter={this.handleEnter}
+                  isInvalid={this.state.isInvalid}
+                />
+                <div className="matches">
+                  {Object.keys(this.state.matches.playerData).map((key) =>
+                    <PlayerMatch
+                      className="match"
+                      key={key}
+                      playerData={this.state.matches.playerData[key]}
+                      gameData={this.state.matches.gameData[key]}
+                      handleClick={this.handleValidEntry}
+                    />)}
+                </div>
+              </>
+            )
+          } else {
+            return (
+              <>
+                <Searchbar 
+                  enter={this.handleEnter}
+                  isInvalid={this.state.isInvalid}
+                />
+                <div className="matches">
+                  <h1>No matches found...</h1>
+                </div>
+              </>
+            )
+          }
+        }
+        else if (this.state.apiCode === 404 ) {
           return (
-            <>
-              <Searchbar 
-                enter={this.handleEnter}
-                isInvalid={this.state.isInvalid}
-              />
-              <div className="matches">
-                {Object.keys(this.state.matches.playerData).map((key) =>
-                  <PlayerMatch
-                    className="match"
-                    key={key}
-                    playerData={this.state.matches.playerData[key]}
-                    gameData={this.state.matches.gameData[key]}
-                    handleClick={this.handleValidEntry}
-                  />)}
-              </div>
-            </>
-          )
-        } else {
-          return (
-            <>
-              <Searchbar 
-                enter={this.handleEnter}
-                isInvalid={this.state.isInvalid}
-              />
-              <div className="matches">
-                <h1>No matches found...</h1>
-              </div>
-            </>
+              <>
+                <Searchbar 
+                  enter={this.handleEnter}
+                  isInvalid={this.state.isInvalid}
+                />
+                <div className="matches">
+                  <h1>Summoner not found...</h1>
+                </div>
+              </>
           )
         }
-      }
-      else if (this.state.apiCode === 404) {
-        return (
-          <h1>Summoner not found</h1>
-        )
       }
     }
   }
