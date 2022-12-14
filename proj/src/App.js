@@ -10,15 +10,6 @@ class App extends React.Component {
           <div className="header">
             <div className="header-container">
               <div className="my-name">
-                <p>bryan zack</p>
-              </div>
-              <div className="my-links">
-                <a href="https://www.linkedin.com/in/bryan-zack-a7947820a/">
-                  <img src={linkedin} width="50" height="50" alt="test"/>
-                </a>
-                <a href="https://github.com/bryanzack">
-                  <img src={github} width="50" height="50" alt="test"/>
-                </a>
               </div>
             </div>
           </div>
