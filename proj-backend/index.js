@@ -2,13 +2,15 @@
 import express from 'express';
 const app = express();
 import fetch  from 'node-fetch';
+import path from 'path';
+import { fileURLToPath } from 'url'
 
 let api_key = "RGAPI-20d29057-f339-42fa-8681-a0a7fb4cd231";
-  /*
-  app.get('/', (request, response) => {
-      response.send('<h1>Phonebook</h1>')
-  })
-  */
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, 'proj/build')));
 
  
 async function getResponse(url) {
@@ -109,7 +111,7 @@ async function getResponse(url) {
       });
   });
 
-  const PORT = 5000
+  const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`)
   });
