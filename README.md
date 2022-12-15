@@ -1,5 +1,5 @@
 # leaguesite
-Find recent match history of any League of Legends user
+Find recent match history of any League of Legends user given a region code and a username
 https://league-site.herokuapp.com/
 
 https://developer.riotgames.com/apis
