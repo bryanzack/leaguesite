@@ -2,7 +2,6 @@
   "name": "league-site",
   "version": "1.0.0",
   "scripts": {
-    "start": "cd ./proj-backend/ && npm install react-scripts && npm start && cd ..",
-    "heroku-postbuild": "cd ./proj/ && npm install react-scripts && npm start"
+    "start": "cd ./proj-backend/ && npm install react-scripts && node index.js"
   }
 }

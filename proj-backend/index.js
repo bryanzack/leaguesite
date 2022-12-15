@@ -10,7 +10,7 @@ let api_key = "RGAPI-20d29057-f339-42fa-8681-a0a7fb4cd231";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(express.static(path.join(__dirname, 'proj/build')));
+app.use(express.static(path.join(__dirname + '/public')));
 
  
 async function getResponse(url) {
