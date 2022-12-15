@@ -1,11 +1,13 @@
 # leaguesite
 Find recent match history of any League of Legends user
 https://league-site.herokuapp.com/
-https://developer.riotgames.com/apis
 
+https://developer.riotgames.com/apis
 Please note that the app adheres to the following API rate limits:
 * 20 requests every 1 second
 * 100 requests every 2 minutes
+
+As this is still a work in progress, the app might fail to load some user profiles. If this happens, please check if It's a known issue. If not, submit your test case as an issue and I'll try and get to it.
 
 Test cases to try:
 * na1, "pointers" (exists & has matches)
@@ -17,4 +19,3 @@ Test cases to try:
 * ru, "gonnahireme?"
 * oc1, "another" (exists & has no matches)
 * tr, "thanksgiving"
-* 
