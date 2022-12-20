@@ -1,4 +1,5 @@
 # leaguesite
+https://github.com/bryanzack/leaguesite/wiki/Problems-with-current-version-and-plans-for-the-next
 Find recent match history of any League of Legends user given a region code and a username
 https://league-site.herokuapp.com/
 
