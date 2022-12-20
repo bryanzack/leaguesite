@@ -2,10 +2,14 @@
 Find recent match history of any League of Legends user given a region code and a username
 https://league-site.herokuapp.com/
 
-https://developer.riotgames.com/apis
+Read more about the progress of this project here:
+
+
 Please note that the app adheres to the following API rate limits:
 * 20 requests every 1 second
 * 100 requests every 2 minutes
+(https://developer.riotgames.com/apis)
+
 
 As this is still a work in progress, the app might fail to load some user profiles. If this happens, please check if It's a known issue. If not, submit your test case as an issue and I'll try and get to it.
 
